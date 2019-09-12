@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class Rope : MonoBehaviour
 {
-    List<GameObject> ropeContainer;
-
     [SerializeField] GameObject prefab, beginHandle, endHandle;
     [SerializeField] int lenght;
     
-    // Start is called before the first frame update
     void Start()
     {
         GameObject current = Instantiate(prefab, transform);
