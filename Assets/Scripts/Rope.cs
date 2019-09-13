@@ -25,8 +25,9 @@ public class Rope : MonoBehaviour
         if (endHandle == null)
             endHandle = current;
 
-        current.AddComponent<DistanceJoint2D>().connectedBody = endHandle.GetComponent<Rigidbody2D>();
-        current.GetComponents<DistanceJoint2D>()[1].distance = current.GetComponents<DistanceJoint2D>()[0].distance;
+        endHandle.AddComponent<DistanceJoint2D>().connectedBody = current.GetComponent<Rigidbody2D>();
+        endHandle.GetComponent<DistanceJoint2D>().distance = current.GetComponent<DistanceJoint2D>().distance;
+        endHandle.GetComponent<DistanceJoint2D>().autoConfigureDistance = current.GetComponent<DistanceJoint2D>().autoConfigureDistance;
     }
 
     void Update()
@@ -37,6 +38,16 @@ public class Rope : MonoBehaviour
 
             if (hit.collider != null)
             {
+                GameObject hookup = hit.collider.gameObject.GetComponent<DistanceJoint2D>().connectedBody?.gameObject;
+
+                if (hookup != null)
+                {
+                    hookup.AddComponent<Hookup>();
+                    hookup.GetComponent<Collider2D>().isTrigger = true;
+                    hookup.GetComponent<BoxCollider2D>().size *= 3;
+                    hookup.gameObject.name = "Hookup";
+                }
+
                 Destroy(hit.collider.gameObject);
             }
         }
