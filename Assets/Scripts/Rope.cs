@@ -6,7 +6,8 @@ public class Rope : MonoBehaviour
 {
     [SerializeField] GameObject prefab, beginHandle, endHandle;
     [SerializeField] int lenght;
-    
+    [SerializeField] Sprite hookupSprite, endEffectorSprite;
+
     void Start()
     {
         GameObject current = Instantiate(prefab, transform);
@@ -43,10 +44,14 @@ public class Rope : MonoBehaviour
 
                 if (hookup != null)
                 {
+                    hookup.GetComponent<SpriteRenderer>().sprite = hookupSprite;
                     hookup.AddComponent<Hookup>();
                     hookup.GetComponent<Collider2D>().isTrigger = true;
+                    hookup.AddComponent<BoxCollider2D>(); 
                     hookup.GetComponent<BoxCollider2D>().size *= 3;
                     hookup.gameObject.name = "Hookup";
+                    hookup.GetComponent<DistanceJoint2D>().distance = 0.07f;
+                    
                 }
 
                 if (other.transform.parent?.gameObject == gameObject)
