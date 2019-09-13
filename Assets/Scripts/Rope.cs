@@ -28,4 +28,17 @@ public class Rope : MonoBehaviour
         current.AddComponent<DistanceJoint2D>().connectedBody = endHandle.GetComponent<Rigidbody2D>();
         current.GetComponents<DistanceJoint2D>()[1].distance = current.GetComponents<DistanceJoint2D>()[0].distance;
     }
+
+    void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.allCameras[0].ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+            if (hit.collider != null)
+            {
+                Destroy(hit.collider.gameObject);
+            }
+        }
+    }
 }
