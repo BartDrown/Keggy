@@ -1748,7 +1748,9 @@ MonoBehaviour:
   prefab: {fileID: 6988570909604045888, guid: a535415c1ff785c44b90acdfce20f45f, type: 3}
   beginHandle: {fileID: 627427951}
   endHandle: {fileID: 1278112743}
-  lenght: 50
+  lenght: 120
+  hookupSprite: {fileID: 21300000, guid: d8e1b72cc71448743aefd646a2f458c7, type: 3}
+  endEffectorSprite: {fileID: 0}
 --- !u!4 &1388839045
 Transform:
   m_ObjectHideFlags: 0

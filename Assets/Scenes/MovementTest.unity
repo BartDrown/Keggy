@@ -580,9 +580,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 6988570909604045888, guid: a535415c1ff785c44b90acdfce20f45f, type: 3}
-  beginHandle: {fileID: 569501838}
-  endHandle: {fileID: 196010691}
+  beginHandle: {fileID: 196010691}
+  endHandle: {fileID: 569501838}
   lenght: 50
+  hookupSprite: {fileID: 0}
+  endEffectorSprite: {fileID: 0}
 --- !u!4 &1388839045
 Transform:
   m_ObjectHideFlags: 0
