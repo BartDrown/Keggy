@@ -38,7 +38,8 @@ public class Rope : MonoBehaviour
 
             if (hit.collider != null)
             {
-                GameObject hookup = hit.collider.gameObject.GetComponent<DistanceJoint2D>().connectedBody?.gameObject;
+                GameObject other = hit.collider.gameObject;
+                GameObject hookup = other.TryGetComponent<DistanceJoint2D>(out _) ? other.GetComponent<DistanceJoint2D>().connectedBody?.gameObject : null;
 
                 if (hookup != null)
                 {
@@ -48,7 +49,8 @@ public class Rope : MonoBehaviour
                     hookup.gameObject.name = "Hookup";
                 }
 
-                Destroy(hit.collider.gameObject);
+                if (other.transform.parent?.gameObject == gameObject)
+                    Destroy(other);
             }
         }
     }
